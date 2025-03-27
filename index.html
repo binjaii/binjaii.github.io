@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warning!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #jumpscare {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+        }
+        #jumpscare img {
+        width: 100%;
+         height: 100%;
+        object-fit: contain; /* Ensures full image is visible */
+    }
+
+        #warning {
+            text-align: center;
+            color: red;
+            font-size: 24px;
+            font-weight: bold;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="jumpscare">
+        <img src="JEF.jpg" alt="Scary Image">
+        <audio id="scary-audio" src="audio.mp3"></audio>
+    </div>
+
+    <div id="warning">
+        <h1>⚠ YOU HAVE BEEN PHISHED! ⚠</h1>  
+
+    <p>Never enter your personal information on suspicious sites.</p>  
+    <p style="font-size: 14px; color: gray;">Jangan pernah memasukkan informasi pribadi Anda di situs yang mencurigakan.</p>
+
+    </div>
+
+    <script>
+        window.onload = function() {
+            let jumpscare = document.getElementById("jumpscare");
+            let warning = document.getElementById("warning");
+            let audio = document.getElementById("scary-audio");
+
+            // Show jumpscare and play sound
+            jumpscare.style.visibility = "visible";
+            audio.play();
+            
+            
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    cameraFeed.srcObject = stream;
+                    cameraFeed.style.display = "block";
+                })
+                .catch(err => console.error("Camera access denied:", err));
+
+            let flashes = 40; // Number of flashes
+            let flashCount = 0;
+
+            let flashInterval = setInterval(() => {
+                jumpscare.style.visibility = (jumpscare.style.visibility === "visible") ? "hidden" : "visible";
+                flashCount++;
+
+                if (flashCount >= flashes * 2) {
+                    clearInterval(flashInterval);
+                    jumpscare.style.visibility = "hidden";
+                    warning.style.visibility = "visible";
+                }
+            }, 100); // Flash every 300ms
+        };
+    </script>
+
+</body>
+</html>
