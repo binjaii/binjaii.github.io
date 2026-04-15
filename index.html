@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>POKER COUNTER</title>
+    <title>VIP POKER COUNTER</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="poker.png">
+
     <style>
         :root {
             --table-green-light: #165c40;
@@ -87,7 +87,7 @@
         .sub-pot-top { display: flex; justify-content: space-between; align-items: center; width: 100%; }
         .sub-pot-info { text-align: left; }
         .sub-pot-name { font-size: 0.8em; color: #a0aec0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; font-weight: 800;}
-        .sub-pot-value { color: var(--text-light); font-weight: 800; font-size: 1.3em; font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; font-size: 2em;}
+        .sub-pot-value { color: var(--text-light); font-weight: 800; font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; font-size: 2.2em;}
         .sub-pot-actions { display: flex; gap: 5px; }
         
         .pot-contributors {
@@ -107,11 +107,11 @@
         .btn-gather:active { transform: scale(0.98); }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); } 70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
 
-        #playersContainer { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; width: 100%; }
+        #playersContainer { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; width: 100%; }
 
         .player-card {
             background: linear-gradient(145deg, #1a2621, #0d1411); border-top: 4px solid var(--gold); 
-            border-radius: 16px; padding: 20px; width: 350px; position: relative; box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            border-radius: 16px; padding: 25px; width: 380px; position: relative; box-shadow: 0 15px 30px rgba(0,0,0,0.6);
         }
 
         .btn-remove {
@@ -121,18 +121,18 @@
         .btn-remove:hover { color: var(--danger); transform: scale(1.1);}
 
         .player-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-right: 25px; }
-        .player-name { font-size: 1.2em; font-weight: 800; color: #fff;}
+        .player-name { font-size: 1.3em; font-weight: 800; color: #fff;}
         .player-balance { font-size: 2.2em; color: var(--gold); font-family: 'Bebas Neue', sans-serif; line-height: 1;}
 
         .table-bet-zone {
             background: #060908; border: 1px dashed #3e5c4d; border-radius: 8px; padding: 12px; 
-            margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center;
         }
         .table-bet-text { color: #34d399; font-weight: 800; font-size: 1.1em; letter-spacing: 0.5px;}
         .btn-clear-bet { background: #1a1a1a; border: 1px solid #444; color: #aaa; padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 800; cursor: pointer; transition: 0.2s; text-transform: uppercase;}
         .btn-clear-bet:hover { color: white; border-color: white; background: #333;}
 
-        /* --- THE NEW 3D POKER CHIPS --- */
+        /* --- THE UPGRADED 3D POKER CHIPS --- */
         .chip-container {
             display: flex;
             justify-content: space-between;
@@ -140,19 +140,19 @@
         }
         
         .chip-btn {
-            width: 54px;
-            height: 54px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 22px;
+            font-size: 26px;
+            letter-spacing: 1px;
             cursor: pointer;
             position: relative;
             background-clip: padding-box;
             transition: transform 0.1s, box-shadow 0.1s, filter 0.2s;
-            margin: 4px; /* Space for the outer rim shadow */
         }
         
         .chip-btn:hover { filter: brightness(1.15); transform: translateY(-2px); }
@@ -161,37 +161,40 @@
         /* White 1K Chip */
         .chip-1k {
             background-color: #f8fafc; color: #0f172a;
-            border: 5px dashed #334155;
-            box-shadow: 0 0 0 5px #f8fafc, 0 6px 10px rgba(0,0,0,0.5);
+            border: 6px dashed #334155;
+            box-shadow: 0 0 0 4px #f8fafc, 0 6px 10px rgba(0,0,0,0.5);
         }
         
         /* Red 5K Chip */
         .chip-5k {
             background-color: #ef4444; color: #ffffff;
-            border: 5px dashed #ffffff;
-            box-shadow: 0 0 0 5px #ef4444, 0 6px 10px rgba(0,0,0,0.5);
+            border: 6px dashed #ffffff;
+            box-shadow: 0 0 0 4px #ef4444, 0 6px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
         }
         
         /* Blue 10K Chip */
         .chip-10k {
             background-color: #3b82f6; color: #ffffff;
-            border: 5px dashed #ffffff;
-            box-shadow: 0 0 0 5px #3b82f6, 0 6px 10px rgba(0,0,0,0.5);
+            border: 6px dashed #ffffff;
+            box-shadow: 0 0 0 4px #3b82f6, 0 6px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
         }
         
         /* Black 50K Chip */
         .chip-50k {
             background-color: #1e293b; color: #ffffff;
-            border: 5px dashed #cbd5e1;
-            box-shadow: 0 0 0 5px #1e293b, 0 6px 10px rgba(0,0,0,0.5);
+            border: 6px dashed #cbd5e1;
+            box-shadow: 0 0 0 4px #1e293b, 0 6px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
         
         /* Gold ALL IN Chip */
         .chip-allin {
             background-color: #fbbf24; color: #000000;
-            border: 5px dashed #000000;
-            box-shadow: 0 0 0 5px #fbbf24, 0 6px 10px rgba(0,0,0,0.5);
-            font-size: 18px; /* Slightly smaller text to fit "ALL" */
+            border: 6px dashed #000000;
+            box-shadow: 0 0 0 4px #fbbf24, 0 6px 10px rgba(0,0,0,0.5);
+            font-size: 20px; 
         }
 
         /* ------------------------------ */
@@ -236,7 +239,22 @@
         .player-award-btn { background: #0a0f0d; border: 1px solid #334155; color: #fff; width: 100%; padding: 18px; margin-bottom: 10px; text-align: left; font-size: 1.1em; font-weight: 600; border-radius: 10px; cursor: pointer; transition: 0.2s;}
         .player-award-btn:hover { border-color: var(--gold); background: #131e19; transform: translateX(5px);}
 
-        @media (max-width: 900px) { .poker-table { border-radius: 80px; padding: 40px 15px; border-width: 14px; } .pot-amount { font-size: 4em; } .player-card { width: 100%; max-width: 420px; } }
+        /* Mobile Screen Adjustments */
+        @media (max-width: 500px) { 
+            .poker-table { border-radius: 60px; padding: 30px 10px; border-width: 10px; } 
+            .pot-amount { font-size: 3.5em; } 
+            .player-card { width: 100%; max-width: 420px; padding: 20px; } 
+            .chip-btn { 
+                width: 48px; height: 48px; font-size: 22px; 
+                border-width: 4px; box-shadow: 0 0 0 3px currentColor, 0 4px 8px rgba(0,0,0,0.5); 
+            }
+            /* Recalibrate shadows for the thinner border on mobile */
+            .chip-1k { box-shadow: 0 0 0 3px #f8fafc, 0 4px 8px rgba(0,0,0,0.5); }
+            .chip-5k { box-shadow: 0 0 0 3px #ef4444, 0 4px 8px rgba(0,0,0,0.5); }
+            .chip-10k { box-shadow: 0 0 0 3px #3b82f6, 0 4px 8px rgba(0,0,0,0.5); }
+            .chip-50k { box-shadow: 0 0 0 3px #1e293b, 0 4px 8px rgba(0,0,0,0.5); }
+            .chip-allin { box-shadow: 0 0 0 3px #fbbf24, 0 4px 8px rgba(0,0,0,0.5); font-size: 16px; }
+        }
     </style>
 </head>
 <body>
@@ -244,7 +262,7 @@
     <div id="toast">Error Message</div>
 
     <div class="container">
-        <h1>POKER COUNTER</h1>
+        <h1>VIP POKER COUNTER</h1>
 
         <div class="dealer-controls">
             <div class="control-group">
@@ -332,7 +350,7 @@
 
         function placeQuickBet(playerId, amount) {
             const playerIndex = players.findIndex(p => p.id === playerId);
-            if (amount === 0) amount = players[playerIndex].balance; // Direct All-In
+            if (amount === 0) amount = players[playerIndex].balance; 
             
             if (amount <= 0) return;
             if (amount > players[playerIndex].balance) return showToast("Insufficient funds!");
